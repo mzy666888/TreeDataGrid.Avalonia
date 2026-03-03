@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Avalonia.Controls.Utils;
-using Avalonia.Utilities;
 
 namespace Avalonia.Controls.Models.TreeDataGrid
 {
@@ -130,7 +129,7 @@ namespace Avalonia.Controls.Models.TreeDataGrid
 
         public (int index, double y) GetRowAt(double y)
         {
-            if (MathUtilities.IsZero(y))
+            if (DoubleUtils.IsZero(y))
                 return (0, 0);
             return (-1, -1);
         }

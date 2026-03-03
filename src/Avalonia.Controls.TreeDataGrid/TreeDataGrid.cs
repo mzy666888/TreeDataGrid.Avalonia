@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -7,10 +8,10 @@ using Avalonia.Controls.Models.TreeDataGrid;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Selection;
 using Avalonia.Controls.Shapes;
+using Avalonia.Controls.Utils;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
-using Avalonia.Utilities;
 using Avalonia.VisualTree;
 
 namespace Avalonia.Controls
@@ -74,6 +75,7 @@ namespace Avalonia.Controls
 
         private const double AutoScrollMargin = 60;
         private const int AutoScrollSpeed = 50;
+        private static readonly Dictionary<string, DragInfo> s_autoDragData = new();
         private TreeDataGridElementFactory? _elementFactory;
         private ITreeDataGridSource? _source;
         private IColumns? _columns;
@@ -469,10 +471,36 @@ namespace Avalonia.Controls
 
             if (allowedEffects != DragDropEffects.None)
             {
-                var data = new DataObject();
                 var info = new DragInfo(_source, RowSelection.SelectedIndexes.ToList());
-                data.Set(DragInfo.DataFormat, info);
-                DragDrop.DoDragDrop(trigger, data, allowedEffects);
+                _ = DoDragDropAsync(trigger, info, allowedEffects);
+            }
+        }
+
+        private static async System.Threading.Tasks.Task DoDragDropAsync(
+            PointerEventArgs trigger,
+            DragInfo info,
+            DragDropEffects allowedEffects)
+        {
+            var token = Guid.NewGuid().ToString("N");
+
+            lock (s_autoDragData)
+            {
+                s_autoDragData[token] = info;
+            }
+
+            try
+            {
+                var item = DataTransferItem.Create(DragInfo.DataFormat, token);
+                var transfer = new DataTransfer();
+                transfer.Add(item);
+                await DragDrop.DoDragDropAsync(trigger, transfer, allowedEffects);
+            }
+            finally
+            {
+                lock (s_autoDragData)
+                {
+                    s_autoDragData.Remove(token);
+                }
             }
         }
 
@@ -613,7 +641,7 @@ namespace Avalonia.Controls
             out TreeDataGridRowDropPosition position)
         {
             if (!AutoDragDropRows ||
-                e.Data.Get(DragInfo.DataFormat) is not DragInfo di ||
+                !TryGetDragInfo(e, out var di) ||
                 _source is null ||
                 _source.IsSorted ||
                 targetRow is null ||
@@ -641,6 +669,19 @@ namespace Avalonia.Controls
 
             data = di;
             return true;
+        }
+
+        private static bool TryGetDragInfo(DragEventArgs e, [NotNullWhen(true)] out DragInfo? info)
+        {
+            info = null;
+
+            if (e.DataTransfer.TryGetValue(DragInfo.DataFormat) is not { } token)
+                return false;
+
+            lock (s_autoDragData)
+            {
+                return s_autoDragData.TryGetValue(token, out info);
+            }
         }
 
         private void OnDragOver(DragEventArgs e)
@@ -719,14 +760,14 @@ namespace Avalonia.Controls
 
         private void OnScrollChanged(object? sender, ScrollChangedEventArgs e)
         {
-            if (Scroll is not null && _headerScroll is not null && !MathUtilities.IsZero(e.OffsetDelta.X))
-                _headerScroll.Offset = _headerScroll.Offset.WithX(Scroll.Offset.X);
+            if (Scroll is { } scroll && _headerScroll is { } headerScroll && !DoubleUtils.IsZero(e.OffsetDelta.X))
+                headerScroll.Offset = headerScroll.Offset.WithX(scroll.Offset.X);
         }
 
         private void OnHeaderScrollChanged(object? sender, ScrollChangedEventArgs e)
         {
-            if (Scroll is not null && _headerScroll is not null && !MathUtilities.IsZero(e.OffsetDelta.X))
-                Scroll.Offset = Scroll.Offset.WithX(_headerScroll.Offset.X);
+            if (Scroll is { } scroll && _headerScroll is { } headerScroll && !DoubleUtils.IsZero(e.OffsetDelta.X))
+                scroll.Offset = scroll.Offset.WithX(headerScroll.Offset.X);
         }
 
         private void OnAutoScrollTick(object? sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Avalonia.Utilities;
+using Avalonia.Controls.Utils;
 
 namespace Avalonia.Controls.Models.TreeDataGrid
 {
@@ -158,7 +158,7 @@ namespace Avalonia.Controls.Models.TreeDataGrid
                 // If the width of any star columns was constrained by their min/max size, and we
                 // actually had any space to distribute between star columns, then we need to update
                 // the star width for the non-constrained columns.
-                if (starWidthWasConstrained && MathUtilities.GreaterThan(availableSpace, 0))
+                if (starWidthWasConstrained && DoubleUtils.GreaterThan(availableSpace, 0))
                 {
                     for (var i = 0; i < Count; ++i)
                     {
