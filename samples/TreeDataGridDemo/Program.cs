@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Avalonia;
-using ReactiveUI.Avalonia;
+using Avalonia.ReactiveUI;
 
 namespace TreeDataGridDemo
 {

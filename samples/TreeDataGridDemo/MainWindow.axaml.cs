@@ -20,7 +20,6 @@ namespace TreeDataGridDemo
         public MainWindow()
         {
             InitializeComponent();
-            this.AttachDevTools();
             DataContext = new MainWindowViewModel();
 
             _tabs = this.FindControl<TabControl>("tabs");
