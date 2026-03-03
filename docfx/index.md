@@ -41,6 +41,10 @@ dotnet add package TreeDataGrid
 - **[Hierarchical Mode Guide](articles/get-started-hierarchical.md)**: End-to-end hierarchical source setup.
 - **[API Documentation](api/index.md)**: Full public API reference.
 
+## Repository
+
+- Source code and issues: [github.com/wieslawsoltes/TreeDataGrid](https://github.com/wieslawsoltes/TreeDataGrid)
+
 ## License
 
 TreeDataGrid is licensed under the MIT License. See [license article](articles/license.md).
