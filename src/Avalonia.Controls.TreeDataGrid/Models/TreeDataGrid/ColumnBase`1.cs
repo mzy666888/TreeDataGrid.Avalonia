@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Avalonia.Utilities;
+using Avalonia.Controls.Utils;
 
 namespace Avalonia.Controls.Models.TreeDataGrid
 {
@@ -118,7 +118,7 @@ namespace Avalonia.Controls.Models.TreeDataGrid
 
             var width = (availableWidth / totalStars) * Width.Value;
             _starWidth = CoerceActualWidth(width);
-            _starWidthWasConstrained = !MathUtilities.AreClose(_starWidth, width);
+            _starWidthWasConstrained = !DoubleUtils.AreClose(_starWidth, width);
         }
 
         bool IUpdateColumnLayout.CommitActualWidth()
@@ -146,7 +146,7 @@ namespace Avalonia.Controls.Models.TreeDataGrid
                 return false;
             }
             
-            return !MathUtilities.AreClose(oldWidth, ActualWidth);
+            return !DoubleUtils.AreClose(oldWidth, ActualWidth);
         }
 
         void IUpdateColumnLayout.SetWidth(GridLength width) => SetWidth(width);

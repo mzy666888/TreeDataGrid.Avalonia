@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using Avalonia.Controls.Models.TreeDataGrid;
+using Avalonia.Controls.Utils;
 using Avalonia.Input;
-using Avalonia.Utilities;
 
 namespace Avalonia.Controls.Primitives
 {
@@ -160,16 +160,16 @@ namespace Avalonia.Controls.Primitives
 
         private void ResizerDragDelta(object? sender, VectorEventArgs e)
         {
-            if (_columns is null || _model is null || MathUtilities.IsZero(e.Vector.X))
+            if (_columns is not { } columns || _model is not { } model || DoubleUtils.IsZero(e.Vector.X))
                 return;
 
-            var pixelWidth = _model.Width.IsAbsolute ? _model.Width.Value : Bounds.Width;
+            var pixelWidth = model.Width.IsAbsolute ? model.Width.Value : Bounds.Width;
 
             if (double.IsNaN(pixelWidth) || double.IsInfinity(pixelWidth) || pixelWidth + e.Vector.X < 0)
                 return;
 
             var width = new GridLength(pixelWidth + e.Vector.X, GridUnitType.Pixel);
-            _columns.SetColumnWidth(ColumnIndex, width);
+            columns.SetColumnWidth(ColumnIndex, width);
         }
 
         private void UpdatePropertiesFromModel()
