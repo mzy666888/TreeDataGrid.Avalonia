@@ -58,6 +58,16 @@ public class TreeDataGridAutomationPeer : ControlAutomationPeer, ISelectionProvi
         return AutomationControlType.DataGrid;
     }
 
+    protected override object? GetProviderCore(Type providerType)
+    {
+        if (providerType == typeof(ISelectionProvider) && _rowSelection is null)
+        {
+            return null;
+        }
+
+        return base.GetProviderCore(providerType);
+    }
+
     private void AttachSource(ITreeDataGridSource? source)
     {
         if (_source is not null)

@@ -58,7 +58,7 @@ public class TreeDataGridRowAutomationPeer : ControlAutomationPeer, IToggleProvi
         {
             if (GetOwningGridOrNull() is { } owner)
             {
-                return ControlAutomationPeer.CreatePeerForElement(owner).GetProvider<ISelectionProvider>();
+                return GetOrCreate(owner).GetProvider<ISelectionProvider>();
             }
 
             return null;
