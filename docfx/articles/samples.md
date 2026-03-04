@@ -1,14 +1,3 @@
-# Samples
+# Article Moved
 
-Run the sample app:
-
-```bash
-dotnet run --project samples/TreeDataGridDemo/TreeDataGridDemo.csproj
-```
-
-The sample includes pages demonstrating:
-
-- flat data with columns
-- hierarchical file-like trees
-- drag-and-drop rows
-- selection scenarios
+This article has moved to [Diagnostics and Testing](advanced/diagnostics-and-testing.md).
