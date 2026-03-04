@@ -1,6 +1,3 @@
-# License
+# Article Moved
 
-This project is licensed under the MIT license:
-
-- Main project license: `licence.md`
-- Preserved upstream license text: `LICENSE-AVALONIA`
+This article has moved to [Reference License](reference/license.md).
