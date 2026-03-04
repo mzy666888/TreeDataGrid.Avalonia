@@ -63,9 +63,9 @@ Fix: ensure `INotifyPropertyChanged`/`INotifyCollectionChanged` flow is active a
 
 ## API Coverage Checklist
 
-- [Avalonia.Controls.TreeDataGrid](xref:Avalonia.Controls.TreeDataGrid)
-- [Avalonia.Controls.FlatTreeDataGridSource`1](xref:Avalonia.Controls.FlatTreeDataGridSource`1)
-- [Avalonia.Controls.HierarchicalTreeDataGridSource`1](xref:Avalonia.Controls.HierarchicalTreeDataGridSource`1)
+- <xref:Avalonia.Controls.TreeDataGrid>
+- <xref:Avalonia.Controls.FlatTreeDataGridSource`1>
+- <xref:Avalonia.Controls.HierarchicalTreeDataGridSource`1>
 
 ## Related
 

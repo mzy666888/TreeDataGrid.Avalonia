@@ -89,8 +89,8 @@ Fix: ensure `INotifyPropertyChanged`/`INotifyCollectionChanged` flow is active a
 
 ## API Coverage Checklist
 
-- [Avalonia.Controls.CellIndex](xref:Avalonia.Controls.CellIndex)
-- [Avalonia.Controls.IndexPath](xref:Avalonia.Controls.IndexPath)
+- <xref:Avalonia.Controls.CellIndex>
+- <xref:Avalonia.Controls.IndexPath>
 
 ## Related
 

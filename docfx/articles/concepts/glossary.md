@@ -108,9 +108,9 @@ Fix: add the term and link it to the namespace reference article.
 
 ## API Coverage Checklist
 
-- [Avalonia.Controls.TreeDataGrid](xref:Avalonia.Controls.TreeDataGrid)
-- [Avalonia.Controls.IndexPath](xref:Avalonia.Controls.IndexPath)
-- [Avalonia.Controls.CellIndex](xref:Avalonia.Controls.CellIndex)
+- <xref:Avalonia.Controls.TreeDataGrid>
+- <xref:Avalonia.Controls.IndexPath>
+- <xref:Avalonia.Controls.CellIndex>
 
 ## Related
 

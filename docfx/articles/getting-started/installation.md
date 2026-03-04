@@ -82,7 +82,7 @@ Fix: verify:
 
 ## API Coverage Checklist
 
-- [Avalonia.Controls.TreeDataGrid](xref:Avalonia.Controls.TreeDataGrid)
+- <xref:Avalonia.Controls.TreeDataGrid>
 
 ## Related
 

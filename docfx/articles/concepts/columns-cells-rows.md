@@ -104,25 +104,25 @@ Fix: ensure `INotifyPropertyChanged`/`INotifyCollectionChanged` flow is active a
 
 ## API Coverage Checklist
 
-- [Avalonia.Controls.Models.TreeDataGrid.CheckBoxCell](xref:Avalonia.Controls.Models.TreeDataGrid.CheckBoxCell)
-- [Avalonia.Controls.Models.TreeDataGrid.ColumnBase`1](xref:Avalonia.Controls.Models.TreeDataGrid.ColumnBase`1)
-- [Avalonia.Controls.Models.TreeDataGrid.ColumnBase`2](xref:Avalonia.Controls.Models.TreeDataGrid.ColumnBase`2)
-- [Avalonia.Controls.Models.TreeDataGrid.ColumnList`1](xref:Avalonia.Controls.Models.TreeDataGrid.ColumnList`1)
-- [Avalonia.Controls.Models.TreeDataGrid.ExpanderCell`1](xref:Avalonia.Controls.Models.TreeDataGrid.ExpanderCell`1)
-- [Avalonia.Controls.Models.TreeDataGrid.ICell](xref:Avalonia.Controls.Models.TreeDataGrid.ICell)
-- [Avalonia.Controls.Models.TreeDataGrid.IColumn`1](xref:Avalonia.Controls.Models.TreeDataGrid.IColumn`1)
-- [Avalonia.Controls.Models.TreeDataGrid.IColumn](xref:Avalonia.Controls.Models.TreeDataGrid.IColumn)
-- [Avalonia.Controls.Models.TreeDataGrid.IColumns](xref:Avalonia.Controls.Models.TreeDataGrid.IColumns)
-- [Avalonia.Controls.Models.TreeDataGrid.IIndentedRow](xref:Avalonia.Controls.Models.TreeDataGrid.IIndentedRow)
-- [Avalonia.Controls.Models.TreeDataGrid.IModelIndexableRow](xref:Avalonia.Controls.Models.TreeDataGrid.IModelIndexableRow)
-- [Avalonia.Controls.Models.TreeDataGrid.IRow`1](xref:Avalonia.Controls.Models.TreeDataGrid.IRow`1)
-- [Avalonia.Controls.Models.TreeDataGrid.IRow](xref:Avalonia.Controls.Models.TreeDataGrid.IRow)
-- [Avalonia.Controls.Models.TreeDataGrid.IRows](xref:Avalonia.Controls.Models.TreeDataGrid.IRows)
-- [Avalonia.Controls.Models.TreeDataGrid.ITextCell](xref:Avalonia.Controls.Models.TreeDataGrid.ITextCell)
-- [Avalonia.Controls.Models.TreeDataGrid.ITextSearchableColumn`1](xref:Avalonia.Controls.Models.TreeDataGrid.ITextSearchableColumn`1)
-- [Avalonia.Controls.Models.TreeDataGrid.IUpdateColumnLayout](xref:Avalonia.Controls.Models.TreeDataGrid.IUpdateColumnLayout)
-- [Avalonia.Controls.Models.TreeDataGrid.TemplateCell](xref:Avalonia.Controls.Models.TreeDataGrid.TemplateCell)
-- [Avalonia.Controls.Models.TreeDataGrid.TextCell`1](xref:Avalonia.Controls.Models.TreeDataGrid.TextCell`1)
+- <xref:Avalonia.Controls.Models.TreeDataGrid.CheckBoxCell>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ColumnBase`1>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ColumnBase`2>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ColumnList`1>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ExpanderCell`1>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ICell>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IColumn`1>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IColumn>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IColumns>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IIndentedRow>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IModelIndexableRow>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IRow`1>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IRow>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IRows>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ITextCell>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.ITextSearchableColumn`1>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.IUpdateColumnLayout>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.TemplateCell>
+- <xref:Avalonia.Controls.Models.TreeDataGrid.TextCell`1>
 
 ## Related
 
