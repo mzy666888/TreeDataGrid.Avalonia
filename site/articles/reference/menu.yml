@@ -1,11 +1,16 @@
 reference:
   - {path: readme.md, title: "Reference"}
+  - {path: package-and-assembly.md, title: "Package and Assembly"}
   - {path: api-coverage-index.md, title: "API Coverage Index"}
+  - {path: namespace-automation-peers.md, title: "Namespace Avalonia.Controls.Automation.Peers"}
   - {path: namespace-avalonia-controls.md, title: "Namespace Avalonia.Controls"}
-  - {path: namespace-models-treedatagrid.md, title: "Namespace Models.TreeDataGrid"}
-  - {path: namespace-selection.md, title: "Namespace Selection"}
-  - {path: namespace-primitives.md, title: "Namespace Primitives"}
-  - {path: namespace-experimental.md, title: "Namespace Experimental"}
-  - {path: namespace-converters-and-models.md, title: "Namespace Converters and Models"}
+  - {path: namespace-converters.md, title: "Namespace Avalonia.Controls.Converters"}
+  - {path: namespace-models.md, title: "Namespace Avalonia.Controls.Models"}
+  - {path: namespace-models-treedatagrid.md, title: "Namespace Avalonia.Controls.Models.TreeDataGrid"}
+  - {path: namespace-selection.md, title: "Namespace Avalonia.Controls.Selection"}
+  - {path: namespace-primitives.md, title: "Namespace Avalonia.Controls.Primitives"}
+  - {path: namespace-data-core-parsers.md, title: "Namespace Avalonia.Data.Core.Parsers"}
+  - {path: namespace-experimental-data.md, title: "Namespace Avalonia.Experimental.Data"}
+  - {path: namespace-experimental-data-core.md, title: "Namespace Avalonia.Experimental.Data.Core"}
   - {path: lunet-docs-pipeline.md, title: "Lunet Docs Pipeline"}
   - {path: license.md, title: "License"}

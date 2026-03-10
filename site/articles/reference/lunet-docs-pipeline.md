@@ -22,6 +22,7 @@ This repository migrated from DocFX to Lunet on `master`.
 - `site/images/**`: Images used by documentation
 - `site/.lunet/css/template-main.css`: precompiled template stylesheet (runtime Sass workaround)
 - `site/.lunet/css/site-overrides.css`: project-specific UI/UX customizations
+- `src/Avalonia.Controls.TreeDataGrid/apidocs/**`: Markdown merged into generated namespace/type API pages
 
 ## API generation
 
@@ -35,9 +36,12 @@ Current API settings:
 
 - `TargetFramework: net8.0`
 - local API pages generated under `/api`
+- package id advertised by the docs site: `TreeDataGrid`
 - `external_apis` mappings for Avalonia assemblies to `https://api-docs.avaloniaui.net/docs`
 
 This keeps TreeDataGrid APIs local while external Avalonia xrefs resolve to the official Avalonia API site.
+
+Namespace and selected type summaries are merged from `src/Avalonia.Controls.TreeDataGrid/apidocs/**` so the generated API pages can carry project-specific narrative text without modifying the Lunet templates.
 
 ## Styling pipeline note
 
@@ -68,7 +72,7 @@ From repository root:
 ./serve-docs.sh
 ```
 
-`serve-docs.sh` prints the local URL and auto-selects the next free port when `DOCS_PORT` is already in use.
+`serve-docs.sh` and `serve-docs.ps1` print the local URL and auto-select the next free port when `DOCS_PORT` is already in use.
 
 PowerShell:
 

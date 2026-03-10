@@ -1,5 +1,6 @@
 advanced:
   - {path: readme.md, title: "Advanced"}
+  - {path: accessibility-and-ui-automation.md, title: "Accessibility and UI Automation"}
   - {path: performance-virtualization-and-realization.md, title: "Performance, Virtualization, and Realization"}
   - {path: primitives-overview.md, title: "Primitives Overview"}
   - {path: custom-element-factory.md, title: "Custom Element Factory"}

@@ -8,23 +8,36 @@ This index tracks article-layer coverage for the complete public API surface.
 
 ## Coverage Summary
 
-- public API types in package: `99`
-- namespaces covered in article reference pages: `9`
-- target for Phase 4: each public type linked and mapped to at least one primary article
+- public API types in package: `105`
+- public namespaces in package: `10`
+- shipped NuGet package: `TreeDataGrid`
+- runtime assembly: `Avalonia.Controls.TreeDataGrid.dll`
+- target: each public type linked and mapped to at least one primary article
 
 ## Namespace Entry Points
 
+- [Package and Assembly](package-and-assembly.md)
+- [Namespace: Avalonia.Controls.Automation.Peers](namespace-automation-peers.md)
 - [Namespace: Avalonia.Controls](namespace-avalonia-controls.md)
+- [Namespace: Avalonia.Controls.Converters](namespace-converters.md)
+- [Namespace: Avalonia.Controls.Models](namespace-models.md)
 - [Namespace: Avalonia.Controls.Models.TreeDataGrid](namespace-models-treedatagrid.md)
 - [Namespace: Avalonia.Controls.Selection](namespace-selection.md)
 - [Namespace: Avalonia.Controls.Primitives](namespace-primitives.md)
-- [Namespace: Avalonia.Experimental.Data / Avalonia.Experimental.Data.Core](namespace-experimental.md)
-- [Namespace: Converters and Base Models](namespace-converters-and-models.md)
+- [Namespace: Avalonia.Data.Core.Parsers](namespace-data-core-parsers.md)
+- [Namespace: Avalonia.Experimental.Data](namespace-experimental-data.md)
+- [Namespace: Avalonia.Experimental.Data.Core](namespace-experimental-data-core.md)
 
 ## Complete Public Type Mapping
 
 | Type | Namespace | Kind | Primary Article |
 |---|---|---|---|
+| <xref:Avalonia.Controls.Automation.Peers.TreeDataGridAutomationPeer> | `Avalonia.Controls.Automation.Peers` | Class | [advanced/accessibility-and-ui-automation.md](../advanced/accessibility-and-ui-automation.md) |
+| <xref:Avalonia.Controls.Automation.Peers.TreeDataGridCellAutomationPeer> | `Avalonia.Controls.Automation.Peers` | Class | [advanced/accessibility-and-ui-automation.md](../advanced/accessibility-and-ui-automation.md) |
+| <xref:Avalonia.Controls.Automation.Peers.TreeDataGridCheckBoxCellAutomationPeer> | `Avalonia.Controls.Automation.Peers` | Class | [advanced/accessibility-and-ui-automation.md](../advanced/accessibility-and-ui-automation.md) |
+| <xref:Avalonia.Controls.Automation.Peers.TreeDataGridColumnHeaderAutomationPeer> | `Avalonia.Controls.Automation.Peers` | Class | [advanced/accessibility-and-ui-automation.md](../advanced/accessibility-and-ui-automation.md) |
+| <xref:Avalonia.Controls.Automation.Peers.TreeDataGridColumnHeadersPresenterAutomationPeer> | `Avalonia.Controls.Automation.Peers` | Class | [advanced/accessibility-and-ui-automation.md](../advanced/accessibility-and-ui-automation.md) |
+| <xref:Avalonia.Controls.Automation.Peers.TreeDataGridRowAutomationPeer> | `Avalonia.Controls.Automation.Peers` | Class | [advanced/accessibility-and-ui-automation.md](../advanced/accessibility-and-ui-automation.md) |
 | <xref:Avalonia.Controls.CellIndex> | `Avalonia.Controls` | Struct | [concepts/indexing-and-addressing.md](../concepts/indexing-and-addressing.md) |
 | <xref:Avalonia.Controls.Converters.IndentConverter> | `Avalonia.Controls.Converters` | Class | [guides/templates-and-styling.md](../guides/templates-and-styling.md) |
 | <xref:Avalonia.Controls.FlatTreeDataGridSource`1> | `Avalonia.Controls` | Class | [guides/sources-flat.md](../guides/sources-flat.md) |
@@ -129,10 +142,13 @@ This index tracks article-layer coverage for the complete public API surface.
 
 - "Primary article" identifies the canonical narrative doc for each type.
 - Generated API pages remain the authoritative member-level reference.
+- Namespace reference pages now mirror the exact public namespace surface rather than grouping unrelated namespaces together.
 - This index complements, but does not replace, [API Documentation](../../api/index.md).
 
 ## Related
 
+- [Package and Assembly](package-and-assembly.md)
+- [Namespace: Avalonia.Controls.Automation.Peers](namespace-automation-peers.md)
 - [Namespace: Avalonia.Controls](namespace-avalonia-controls.md)
 - [Advanced: Diagnostics and Testing](../advanced/diagnostics-and-testing.md)
 - [TreeDataGrid Glossary](../concepts/glossary.md)

@@ -4,6 +4,7 @@ title: "Advanced"
 
 # Advanced
 
+- [Accessibility and UI Automation](accessibility-and-ui-automation.md)
 - [Performance, Virtualization, and Realization](performance-virtualization-and-realization.md)
 - [Primitives Overview](primitives-overview.md)
 - [Custom Element Factory](custom-element-factory.md)

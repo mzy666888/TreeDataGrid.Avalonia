@@ -20,6 +20,12 @@ If you use `PackageReference` directly:
 </ItemGroup>
 ```
 
+TreeDataGrid uses different identifiers for package and runtime assets:
+
+- NuGet package: `TreeDataGrid`
+- runtime assembly: `Avalonia.Controls.TreeDataGrid.dll`
+- theme URI root: `avares://Avalonia.Controls.TreeDataGrid/`
+
 ## 2. Add TreeDataGrid Theme
 
 Add the style include to `App.axaml`:
