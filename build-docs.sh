@@ -4,6 +4,17 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOCK_DIR="${SCRIPT_DIR}/site/.lunet/.build-lock"
 
+search_logs() {
+    local pattern="$1"
+    shift
+
+    if command -v rg >/dev/null 2>&1; then
+        rg -n -e "$pattern" "$@"
+    else
+        grep -n -E "$pattern" "$@"
+    fi
+}
+
 clean_docs_outputs() {
     find "${SCRIPT_DIR}/src" -path '*/obj/Release/*/Avalonia.Controls.TreeDataGrid.api.json' -delete
     rm -rf "${SCRIPT_DIR}/site/.lunet/build/cache/api/dotnet" \
@@ -34,7 +45,7 @@ LUNET_LOG="$(mktemp)"
 
 dotnet tool run lunet --stacktrace build 2>&1 | tee "${LUNET_LOG}"
 
-if rg -n 'ERR lunet|Error while building api dotnet|Unable to select the api dotnet output' "${LUNET_LOG}" >/dev/null; then
+if search_logs 'ERR lunet|Error while building api dotnet|Unable to select the api dotnet output' "${LUNET_LOG}" >/dev/null; then
     echo "Lunet reported API/site build errors."
     exit 1
 fi

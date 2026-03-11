@@ -3,6 +3,28 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+search_generated_regex() {
+    local pattern="$1"
+    shift
+
+    if command -v rg >/dev/null 2>&1; then
+        rg -n -g '*.html' -e "$pattern" "$@"
+    else
+        grep -R -n -E --include='*.html' "$pattern" "$@"
+    fi
+}
+
+search_generated_fixed() {
+    local text="$1"
+    shift
+
+    if command -v rg >/dev/null 2>&1; then
+        rg -n -F "$text" "$@"
+    else
+        grep -R -n -F "$text" "$@"
+    fi
+}
+
 "${SCRIPT_DIR}/build-docs.sh"
 
 DOC_ROOT="${SCRIPT_DIR}/site/.lunet/build/www"
@@ -31,17 +53,17 @@ test -f "${DOC_ROOT}/articles/build-and-package/index.html"
 test -f "${DOC_ROOT}/articles/samples/index.html"
 test -f "${DOC_ROOT}/css/lite.css"
 
-if rg -nP 'href="(?!https?://)[^"]*\.md(?:[?#"][^"]*)?"' "${DOC_ROOT}" >/dev/null; then
+if search_generated_regex 'href="[^"]*\.md([?#"][^"]*)?"' "${DOC_ROOT}" | grep -vE 'href="https?://' >/dev/null; then
     echo "Generated docs contain raw .md links."
     exit 1
 fi
 
-if rg -n 'href="[^"]*/readme(?:[?#"][^"]*)?"' "${DOC_ROOT}" >/dev/null; then
+if search_generated_regex 'href="[^"]*/readme([?#"][^"]*)?"' "${DOC_ROOT}" >/dev/null; then
     echo "Generated docs contain /readme routes instead of directory routes."
     exit 1
 fi
 
-if rg -n 'href="[^"]*/api/index\.md(?:[?#"][^"]*)?"' "${DOC_ROOT}" >/dev/null; then
+if search_generated_regex 'href="[^"]*/api/index\.md([?#"][^"]*)?"' "${DOC_ROOT}" >/dev/null; then
     echo "Generated docs contain stale /api/index.md links."
     exit 1
 fi
@@ -52,12 +74,12 @@ if find "${DOC_ROOT}/articles" -name '*.md' -print -quit | grep -q .; then
     exit 1
 fi
 
-if rg -n 'Creative Commons|CC BY 2.5' "${DOC_ROOT}/index.html" "${DOC_ROOT}/articles/getting-started/overview/index.html" >/dev/null; then
+if search_generated_regex 'Creative Commons|CC BY 2.5' "${DOC_ROOT}/index.html" "${DOC_ROOT}/articles/getting-started/overview/index.html" >/dev/null; then
     echo "Generated docs contain the default Creative Commons footer instead of the project MIT license footer."
     exit 1
 fi
 
-if ! rg -F 'MIT license' "${DOC_ROOT}/index.html" >/dev/null; then
+if ! search_generated_fixed 'MIT license' "${DOC_ROOT}/index.html" >/dev/null; then
     echo "Generated site footer is missing the project MIT license text."
     exit 1
 fi
@@ -68,13 +90,13 @@ if ! test -f "${TREE_DATAGRID_API_PAGE}"; then
     exit 1
 fi
 
-if ! rg -F 'https://api-docs.avaloniaui.net/docs/Avalonia.Controls.Control/' "${TREE_DATAGRID_API_PAGE}" >/dev/null; then
+if ! search_generated_fixed 'https://api-docs.avaloniaui.net/docs/Avalonia.Controls.Control/' "${TREE_DATAGRID_API_PAGE}" >/dev/null; then
     echo "Generated TreeDataGrid API page is missing the external Avalonia.Controls.Control link."
     exit 1
 fi
 
 XAML_INDEX_PAGE="${DOC_ROOT}/articles/xaml/index.html"
-if ! rg -F '/TreeDataGrid/css/lite.css' "${XAML_INDEX_PAGE}" >/dev/null; then
+if ! search_generated_fixed '/TreeDataGrid/css/lite.css' "${XAML_INDEX_PAGE}" >/dev/null; then
     echo "Production XAML docs page is missing the project-basepath-prefixed lite.css URL."
     exit 1
 fi

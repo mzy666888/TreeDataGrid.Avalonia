@@ -13,7 +13,6 @@ on:
       - master
       - main
   workflow_dispatch:
-      - develop
 
 env:
   DOTNET_NOLOGO: true
