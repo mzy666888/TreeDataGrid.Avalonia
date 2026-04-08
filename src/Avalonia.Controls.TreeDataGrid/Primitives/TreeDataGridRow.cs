@@ -42,8 +42,8 @@ namespace Avalonia.Controls.Primitives
         private bool _isSelected;
         private IRows? _rows;
         private Point _mouseDownPosition = s_InvalidPoint;
+        private PointerPressedEventArgs? _pressedEventArgs;
         private TreeDataGrid? _treeDataGrid;
-        private PointerPressedEventArgs? _press;
 
         public IColumns? Columns
         {
@@ -154,7 +154,7 @@ namespace Avalonia.Controls.Primitives
         {
             base.OnPointerPressed(e);
             _mouseDownPosition = !e.Handled ? e.GetPosition(this) : s_InvalidPoint;
-            _press = e;
+            _pressedEventArgs = !e.Handled ? e : null;
         }
 
         protected override void OnPointerMoved(PointerEventArgs e)
@@ -173,28 +173,31 @@ namespace Avalonia.Controls.Primitives
             if (!pointerSupportsDrag ||
                 e.Handled ||
                 Math.Abs(delta.X) < DragDistance && Math.Abs(delta.Y) < DragDistance ||
-                _mouseDownPosition == s_InvalidPoint
-                || _press == null)
+                _mouseDownPosition == s_InvalidPoint ||
+                _pressedEventArgs is null)
                 return;
 
+            var pressedEventArgs = _pressedEventArgs;
             _mouseDownPosition = s_InvalidPoint;
+            _pressedEventArgs = null;
 
             var presenter = Parent as TreeDataGridRowsPresenter;
             var owner = presenter?.TemplatedParent as TreeDataGrid;
-            owner?.RaiseRowDragStarted(_press);
+            owner?.RaiseRowDragStarted(pressedEventArgs);
         }
 
         protected override void OnPointerReleased(PointerReleasedEventArgs e)
         {
             base.OnPointerReleased(e);
             _mouseDownPosition = s_InvalidPoint;
-            _press = null;
+            _pressedEventArgs = null;
         }
 
         protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
         {
             base.OnPointerCaptureLost(e);
             _mouseDownPosition = s_InvalidPoint;
+            _pressedEventArgs = null;
         }
 
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
