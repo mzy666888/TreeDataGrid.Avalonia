@@ -43,6 +43,7 @@ namespace Avalonia.Controls.Primitives
         private IRows? _rows;
         private Point _mouseDownPosition = s_InvalidPoint;
         private TreeDataGrid? _treeDataGrid;
+        private PointerPressedEventArgs? _press;
 
         public IColumns? Columns
         {
@@ -153,12 +154,12 @@ namespace Avalonia.Controls.Primitives
         {
             base.OnPointerPressed(e);
             _mouseDownPosition = !e.Handled ? e.GetPosition(this) : s_InvalidPoint;
+            _press = e;
         }
 
         protected override void OnPointerMoved(PointerEventArgs e)
         {
             base.OnPointerMoved(e);
-
             var currentPoint = e.GetCurrentPoint(this);
             var delta = currentPoint.Position - _mouseDownPosition;
 
@@ -172,20 +173,22 @@ namespace Avalonia.Controls.Primitives
             if (!pointerSupportsDrag ||
                 e.Handled ||
                 Math.Abs(delta.X) < DragDistance && Math.Abs(delta.Y) < DragDistance ||
-                _mouseDownPosition == s_InvalidPoint)
+                _mouseDownPosition == s_InvalidPoint
+                || _press == null)
                 return;
 
             _mouseDownPosition = s_InvalidPoint;
 
             var presenter = Parent as TreeDataGridRowsPresenter;
             var owner = presenter?.TemplatedParent as TreeDataGrid;
-            owner?.RaiseRowDragStarted(e);
+            owner?.RaiseRowDragStarted(_press);
         }
 
         protected override void OnPointerReleased(PointerReleasedEventArgs e)
         {
             base.OnPointerReleased(e);
             _mouseDownPosition = s_InvalidPoint;
+            _press = null;
         }
 
         protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)
